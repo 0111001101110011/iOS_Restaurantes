@@ -16,8 +16,8 @@ class Restaurante {
     
     init(nombre : String, direccion : String, telefono : String, descripcion : String){
         self.nombre = nombre
-        self.direccion = nombre
-        self.telefono = nombre
-        self.descripcion = nombre
+        self.direccion = direccion
+        self.telefono = telefono
+        self.descripcion = descripcion 
     }
 }

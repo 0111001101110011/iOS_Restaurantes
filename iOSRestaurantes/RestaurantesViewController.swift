@@ -12,9 +12,16 @@ class RestaurantesViewController: UIViewController, UITableViewDataSource, UITab
     
     var restaurantes : [Restaurante] = []
     
+    @IBOutlet weak var tableViewController: UITableView!
     override func viewDidLoad() {
-        restaurantes.append(Restaurante(nombre: "Thrifty", direccion: "Paseo de la Floresta 59", telefono: "6622971893", descripcion: "Heladería"))
+        restaurantes.append(Restaurante(nombre: "La Hacienda", direccion: "Veracruz #243", telefono: "6871563409", descripcion: "Mariscos"))
+        
+         restaurantes.append(Restaurante(nombre: "Mariscos Soto", direccion: "BLVD. 16 de Septiembre 766", telefono: "6871263409", descripcion: "Por Concepto"))
+    
+        restaurantes.append(Restaurante(nombre: "Netza's Wings", direccion: "Potam #212", telefono: "6871543409", descripcion: "Familiar"))
+        
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -30,5 +37,13 @@ class RestaurantesViewController: UIViewController, UITableViewDataSource, UITab
         celda?.textLabel?.text = restaurantes[indexPath.row].nombre
 
         return celda!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetallesRestaurante"
+        {
+            let destino = segue.destination as? DetallesRestaurante
+            destino?.restaurante = restaurantes[tableViewController.indexPathForSelectedRow!.row]
+        }
     }
 }
